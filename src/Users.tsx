@@ -4,7 +4,7 @@
 import { List, Datagrid, TextField, EmailField} from 'react-admin';
 import { MyUrlField} from './MyUrlField';
 
-export const UserList = (props:any) => (
+export const UserList = (props:object) => (
     <List {...props}>
     <Datagrid rowClick="edit">
         {console.log(props)}
