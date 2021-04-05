@@ -2,6 +2,7 @@
  * Sample of using styles
  */
 import * as React from "react";
+import {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LaunchIcon from '@material-ui/icons/Launch';
 import {Record} from 'react-admin';
@@ -25,8 +26,10 @@ interface reco {
     source:string
 }
 
-export const MyUrlField = (rec:reco) => {
+export const MyUrlField:FC<any> = (rec) => {
     const classes = useStyles();
+    console.log("My Url FIeld");
+    console.log(rec);
     return (
         <a href={rec.record[rec.source]} className={classes.link}>
             {rec.record[rec.source]}

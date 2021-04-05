@@ -2,6 +2,7 @@
  * A sample for posts that uses a reference field. 
  */
 import * as React from 'react';
+import {FC} from 'react';
 import {ListProps}from '@material-ui/core';
 import {
     List,
@@ -14,12 +15,15 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
-    Create
+    Create,
 } from 'react-admin';
 
-const PostTitle = (rec:{record:any}) => {
-        return <span>Post {rec.record ? `"${rec.record.title}"` : ''}</span>;
-    };
+const PostTitle:FC<any> = (rec) => {
+    console.log("Post Title");
+    console.log(rec);
+    return <span>Post {rec.record ? `"${rec.record.title}"` : ''}</span>;
+    
+};
 
 /**
  * To list all post
@@ -37,15 +41,16 @@ export const PostList = (props:object) => (
             <TextField source="body" />
         </Datagrid>
     </List>
-)
+);
 
 /**
  * To show form page
  * @param props 
  * @returns 
  */
-export const PostEdit = (props:object) => (
-    <Edit {...props}>
+export const PostEdit = (props:object) => {
+    return (
+    <Edit title={<PostTitle/>} {...props}>
         <SimpleForm>
             <ReferenceInput source="userId" reference="users">
                 <SelectInput optionText="id" />
@@ -55,9 +60,12 @@ export const PostEdit = (props:object) => (
             <TextInput source="body" />
         </SimpleForm>
     </Edit>
-)
+    );
+};
 
-export const PostCreate = (props:object) => (
+export const PostCreate = (props:object) => {
+
+    return (
         <Create {...props}>
             <SimpleForm>
                 <ReferenceInput source="userId" reference="users">
@@ -67,4 +75,5 @@ export const PostCreate = (props:object) => (
                 <TextInput multiline source="body" />
             </SimpleForm>
         </Create>
-    );
+    )
+};

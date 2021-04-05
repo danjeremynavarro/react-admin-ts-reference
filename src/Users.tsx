@@ -7,7 +7,6 @@ import { MyUrlField} from './MyUrlField';
 export const UserList = (props:object) => (
     <List {...props}>
     <Datagrid rowClick="edit">
-        {console.log(props)}
     <TextField source="id" />
     <TextField source="name" />
     <EmailField source="email" />
